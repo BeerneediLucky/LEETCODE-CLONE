@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leetcode</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        body{
+            background-color: rgb(0, 0, 0);
+            overflow: auto;
+        }
+        header {
+            margin: 0;
+            color: white;
+            height: 20px;
+            padding: 10px;
+            font-family: Arial;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+            gap: 50px;
+            position: relative;
+        }
+        .logo img {
+            padding-top: 10px;
+            width: 20px;
+            height: 20px;
+            object-fit: cover;
+        }
+        header .div{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .divider {
+            width: 1px;
+            height: 20px;
+            background-color: #696969;
+            display: inline-block;
+            margin: 0 10px;
+        }
+        .bi-chevron-left{
+            color: #898989;  
+        }
+        .bi-chevron-right{
+            color: #898989;  
+        }
+        .bi-shuffle {
+            color: #898989;  
+        }
+        .btnbg span{
+            background-color:  rgb(45, 45, 45);
+            gap: 10px;
+            padding: 5px;
+        }
+        .bi-bug {
+            padding: 5px;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+        .bi-cloud-arrow-up {
+            color: rgb(129, 255, 67);
+            padding: 5px;
+        }
+        .bi-sticky {
+            margin-left: 7px;
+            padding: 5px;
+            gap: 10px;
+            border-radius: 5px;
+        }
+        .bi-stopwatch {
+            color: rgb(72, 97, 255);
+            background-color: rgb(62, 62, 62);
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .bi-prebtn {
+            color: rgb(255, 198, 12);
+            background-color: rgb(62, 62, 62);
+            padding: 5px;
+            border-radius: 5px;
+            font-size: small;
+        }
+        section {
+            display: grid;
+            grid-template-columns: 6fr 6fr;
+            grid-gap: 10px;
+            font-family: Arial;
+            height: 100%;
+            border: 1 px solid #c3c3c3;
+            }
+
+        .left-panel {
+            border: 1 px solid #c3c3c3;
+            background-color: rgb(43, 40, 40);
+            color: white;
+            border-radius: 10px;
+            height: 630px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            width: 49vw;
+        }
+        
+        .bi-file, .bi-sticky, .bi-flask, .bi-arrow-counterclockwise {
+            color: #2897ff;
+        }
+        .word{
+            color: rgb(131, 137, 143);
+        }
+        .bi-book{
+            color: rgb(253, 174, 38);
+        }
+        .left-body{
+            margin-top: -10px;
+            padding: 25px;
+        }
+        .footer{ 
+            background-color: rgb(123, 123, 124);
+            font-size: medium;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        .footer-left {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            border: #ffffff;
+            margin-top: 27px;
+            gap: 10px;
+            width: 100%;
+        }
+        .bi-hand-thumbs-up{
+        
+            padding: 5px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            margin-right: -3px;
+        }
+
+        .bi-hand-thumbs-down{
+    
+            padding: 5px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .chat-secondry{
+            padding: 10px;
+            border-top: none;
+            border-right: 2px solid #E5E5E5;
+        }
+
+        .bi-star{
+            padding: 10px;
+        }
+
+        .bi-box-arrow-up-right{
+            padding: 10px;
+        }
+
+        .bi-question-circle{
+             padding: 10px;
+        }
+        
+       
+        .left-header,
+        .right-header {
+            height: 40px;
+            background-color: rgb(52, 51, 51);
+            color: rgba(211, 211, 211, 0.811);
+            display: flex;
+            align-items: center;
+            padding-left: 15px;
+            gap: 10px;
+            font-size: 14px;
+            position: sticky;
+            top: 0;
+        }
+        .right-panel {
+            border: 1 px solid #c3c3c3;
+            background-color: rgb(43, 40, 40);
+            color: white;
+            border-radius: 10px;
+            height: 630px;
+            width: 49vw;
+            border-bottom: 10px;
+        }
+        .rightcon {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+        .right-header2 {
+            border-bottom: 1px solid #464444;
+            display: flex;
+            color: #a09898;
+            padding: 10px 15px 10px 15px;
+            font-size: 14px;
+        }
+        .bi-code-slash {
+            color: rgb(40, 255, 32);
+        }
+        .bi-code-slash span{
+            color:#a09898;
+        }
+        .right-header3 {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 10px;
+            margin-left: auto;
+        }
+        .right-panel-body {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .right-body {
+            padding: 10px;
+        }
+
+        .rightpanel-body-footer1 .footer-top {
+            font-size: 12px;
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            color: rgb(161, 161, 161);
+        }
+        .bottom-right-panel {
+            background-color: rgb(57, 57, 57);
+            border: 1px solid #a5a3a3;
+            border-radius: 7px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            margin-top: auto;
+            color: white;
+        }
+
+        .bi-check-square {
+            color: #02B128;
+            font-size: 12.5px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .bi-check-square span {
+            color: white;
+            font-size: 13.5px;
+            margin-left: 5px;
+        }
+        .bottom-right-panel .bi-chevron-right {
+            color: #6A9955;
+            font-size: 13.5px;
+            margin-left: 3px;
+            padding-left: 5px;
+            border-left: 1px solid #ffffff;
+        }
+
+        .bottom-right-panel .bi-chevron-right span {
+            color: #ffffff;
+            font-size: 14px;;
+        }
+
+        .login-btn {
+            color: #007bf7;
+            font-weight: bold;
+        }
+        .rightpanel-body-footer1 .footer-top  {
+            margin-top: 200px;
+            color: #ffffff;
+            padding: 10px;
+        }
+        .footer-bottom {
+            background-color: rgb(58, 170, 255);
+            font-size: medium;
+            padding: 5px 10px 5px 10px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <span class="logo"><img src="images/leetcode.jpg" alt="logo"></span>
+            <span class="divider"></span>
+            <span class="bi bi-javascript"></span>
+            <span> 30 Days of JavaScript </span>
+            <span class="bi bi-chevron-left"></span>
+            <span class="bi bi-chevron-right"></span>
+            <span class="bi bi-shuffle"></span>
+        </div>
+        <div class="btnbg">
+            <span class="bi bi-bug"></span>
+            <span class="bi bi-play-fill"></span>
+            <span class="bi bi-cloud-arrow-up"><span class="btn-submit">Submit</span></span>
+            <span class="bi bi-sticky"></span>
+        </div>
+        <div class="rightcon">
+            <span class="bi bi-columns-gap"></span>
+            <span class="bi bi-gear"></span>
+            <span class="bi bi-stopwatch"></span>
+            <span class="headline">Register<span> or </span><span> Sign in </span></span>
+            <span class="bi bi-prebtn"> Premium </span>
+        </div>
+    </header>
+    <section>
+    <div class="left-panel">
+      <div class="left-header"> 
+        <span class="bi bi-file"><span class="word"> Description </span></span>
+        <span class="bi bi-sticky"><span class="word"> Note </span></span>
+        <span class="bi bi-book"><span class="word"> Editorial </span></span>
+        <span class="bi bi-flask"><span class="word"> Solution </span></span>
+        <span class="bi bi-arrow-counterclockwise"><span class="word"> Submission </span></span>
+      </div>
+      <div class="left-body">
+        <h3>2667. Create Hello World Function</h3>
+        <p>Write a function <samp>createHelloWorld.</samp> It should return a new function that always returns "Hello World".</p>
+        <h4>Example 1:</h4>
+        <pre>
+            <code>
+                 Input: args = []
+                Output: "Hello World"
+                Explanation:
+                const f = createHelloWorld();
+                f(); // "Hello World"
+                        </pre>
+                        <h4>Example 2:</h4>
+                        <pre>
+                Input: args = [{},null,42]
+                Output: "Hello World"
+                Explanation:
+                const f = createHelloWorld();
+                f({}, null, 42); // "Hello World"
+            </code>
+        </pre>
+        <h4>Constraints:</h4>
+        <samp>0 &lt;= args.length &lt;= 10</samp>
+      </div>
+       <footer class="footer">
+            <div class="footer-left">
+            <span class="bi bi-hand-thumbs-up"> 1.5k</span>
+            <span class="bi bi-hand-thumbs-down"></span>
+            <span class="bi bi-chat chat-secondry"> 252</span>
+            <span class="bi bi-star"></span>
+            <span class="bi bi-box-arrow-up-right"></span>
+            <span class="bi bi-question-circle"></span>
+            </div>
+      </footer>
+    </div>
+
+    <div class="right-panel">
+      <div class="right-panel-body">
+        <div class="right-header">
+          <span class="bi bi-code-slash"><span>  Code </span></span>
+        </div>
+        <div class="right-header2">
+          <span>JavaScript <span class="bi bi-chevron-down"></span></span>
+          <span class="bi bi-dot"> Auto</span>
+          <div class="right-header3">
+            <span class="bi bi-bookmark"></span>
+            <span class="bi bi-braces"></span>
+            <span class="bi bi-arrow-counterclockwise"></span>
+            <span class="bi bi-arrows-angle-expand"></span>
+          </div>
+        </div>
+        <div class="right-body">
+          <ol>
+            <code>
+              <li> /** </li>
+              <li>  * @return {Function}</li>
+              <li> */ </li>
+              <li> var createHelloWorld = function() { </li>
+              <li>     return function(...args) { </li>
+              <li>         return "Hello World"; </li>
+              <li>     }</li>
+              <li>}; </li>
+              <li>/** </li>
+              <li> * const f = createHelloWorld(); </li>
+              <li> * f(); // "Hello World" </li>
+              <li> */ </li>
+            </code>
+          </ol>
+        </div>
+        <div class="rightpanel-body-footer1">
+          <div class="footer-top">
+            <span>Saved</span>
+            <span>Ln 1, Col 4</span>
+          </div>
+          <div class="footer-bottom">
+            <p class="des">You need to <span class="login-btn">&nbsp;Login / Sign &nbsp;</span> up to run or submit</p>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-right-panel">
+        <span class="bi bi-check-square"><span>TestCase</span></span>
+        <span class="bi bi-chevron-right">_ <span>Test result</span></span>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
